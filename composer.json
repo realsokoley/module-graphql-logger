@@ -1,0 +1,32 @@
+{
+  "name": "sokoley/module-graphql-logger",
+  "type": "magento2-module",
+  "version": "2.3.1",
+  "description": "Allows to log graphql queries",
+  "authors": [
+    {
+      "name": "Sokoley",
+      "email": "sokoley@yandex.ru",
+      "role": "Developer"
+    }
+  ],
+  "keywords": [
+    "magento",
+    "graphql",
+    "logger"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Sokoley\\GraphQLLogger\\": ""
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com"
+    }
+  ]
+}

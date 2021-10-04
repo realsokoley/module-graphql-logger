@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="GraphQlHandler" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">var/log/graphql.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GraphQlLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">graphql</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="object">GraphQlHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\GraphQl\Query\QueryProcessor">
+        <plugin name="graphql_query_logger"
+                type="Sokoley\GraphQlLogger\Plugin\GraphQlQueryLogger"/>
+    </type>
+    <type name="Sokoley\GraphQlLogger\Model\Logger">
+        <arguments>
+            <argument name="logger" xsi:type="object">GraphQlLogger</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="graphql_logger_command" xsi:type="object">
+                    Sokoley\GraphQlLogger\Console\Command\GraphQlLoggerCommand
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>
