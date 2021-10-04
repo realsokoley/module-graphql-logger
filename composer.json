@@ -1,7 +1,7 @@
 {
   "name": "sokoley/module-graphql-logger",
   "type": "magento2-module",
-  "version": "2.3.1",
+  "version": "2.3.0",
   "description": "Allows to log graphql queries",
   "authors": [
     {
